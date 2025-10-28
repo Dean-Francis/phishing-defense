@@ -1,1 +1,37 @@
-# gitignore
+# Environment & Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Models & Data (use Git LFS for large files)
+*.h5
+*.pkl
+*.pth
+datasets/raw/*
+datasets/processed/*
+!datasets/**/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
