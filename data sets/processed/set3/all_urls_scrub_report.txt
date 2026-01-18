@@ -1,0 +1,110 @@
+Scrub Report for output\set3\all_urls.csv
+============================================================
+
+Row 14:
+  Column: url
+    BEFORE: https://loop.hiojoo.sa.com/hlgylwz0g8satq?e1ff20122a-d0fd51ed6696872bdae9d05d1a8d75-a21352e0617fa361dd07c8c47-7dcf7964643fb5781495355db-9ac75327df2d569e36c0c6d7b-4a31ecba91afd493246cafa96/
+    AFTER:  https://loop.hiojoo.sa.com/hlgylwz0g8satq?e1ff20122a-d0fd51ed6696872bdae9d05d1a8d75-a21352e0617fa361dd07c8c47-7dcf7964643fb***-***-5355db-9ac75327df2d569e36c0c6d7b-4a31ecba91afd493246cafa96/
+  ---
+
+Row 102:
+  Column: url
+    BEFORE: https://eu.jotform.com/app/251923137252352
+    AFTER:  https://eu.jotform.com/app/***-***-137252352
+  ---
+
+Row 160:
+  Column: url
+    BEFORE: http://43.134.167.94/v3/signin/identifier?dsh=S520764486%3A1680120046851997&amp%3Bifkv=AQMjQ7S7hsGO4jMIBQ4OHzkQkrTrGGs2vgOMeJT7SzMqmIkj3eDSbx7MeHM3AP-GYc7SfkhcnjhJ&amp%3Bxrealip=107.178.200.216&continue=https%3A%2F%2Faccounts.google.com%2F%3F&xrealip=107.21.207.171&flowName=WebLiteSignIn&flowEntry=ServiceLogin&ifkv=AQMjQ7QZWLvzCSt9OTHjV25qwuo-WrlKfQjt_8FovSp6BU56psoCaAthWxepDK3_LWlo4lyXGINS1A
+    AFTER:  http://43.134.167.94/v3/signin/identifier?dsh=S520764486%3A***-***-0046851997&amp%3Bifkv=AQMjQ7S7hsGO4jMIBQ4OHzkQkrTrGGs2vgOMeJT7SzMqmIkj3eDSbx7MeHM3AP-GYc7SfkhcnjhJ&amp%3Bxrealip=107.178.200.216&continue=https%3A%2F%2Faccounts.google.com%2F%3F&xrealip=107.21.207.171&flowName=WebLiteSignIn&flowEntry=ServiceLogin&ifkv=AQMjQ7QZWLvzCSt9OTHjV25qwuo-WrlKfQjt_8FovSp6BU56psoCaAthWxepDK3_LWlo4lyXGINS1A
+  ---
+
+Row 170:
+  Column: url
+    BEFORE: https://pub-86bcfdb5c8f244d2bfc98c86780eea34.r2.dev/auth-mfa.html#tena.simpson@albemarle.com
+    AFTER:  https://pub-86bcfdb5c8f244d2bfc98c86780eea34.r2.dev/auth-mfa.html#[EMAIL_REDACTED]
+  ---
+
+Row 241:
+  Column: url
+    BEFORE: https://hotm.art/2385723905230676
+    AFTER:  https://hotm.art/XXXX-XXXX-XXXX-0676
+  ---
+
+Row 243:
+  Column: url
+    BEFORE: https://uploads.strikinglycdn.com/files/3b3d9518-0099-4eb2-809f-d045a111a550/reglement_tombola_Domaine_du_Port2.0.pdf?t=1704638177&amp;id=4091046
+    AFTER:  https://uploads.strikinglycdn.com/files/3b3d9518-0099-4eb2-809f-d045a111a550/reglement_tombola_Domaine_du_Port2.0.pdf?t=***-***-8177&amp;id=4091046
+  ---
+
+Row 291:
+  Column: url
+    BEFORE: https://eu.jotform.com/app/252102307522341
+    AFTER:  https://eu.jotform.com/app/XXXX-XXXX-XXX-2341
+  ---
+
+Row 329:
+  Column: url
+    BEFORE: https://hicman00127937338.pages.dev/hicman0_gen#@
+    AFTER:  https://hicman***-***-37338.pages.dev/hicman0_gen#@
+  ---
+
+Row 331:
+  Column: url
+    BEFORE: https://pub-cb72691642c444eb900a44aa1d8a7107.r2.dev/aguiyi-e5cc43015815732a4d38f73eec6434e3e5cc43015815732a4d38f73eec6434e3e5cc43015815732a4d38f73eec6434e3outl00kAguiyi.html
+    AFTER:  https://pub-cb72691642c444eb900a44aa1d8a7107.r2.dev/aguiyi-e5cc***-***-15732a4d38f73eec6434e3e5cc***-***-15732a4d38f73eec6434e3e5cc***-***-15732a4d38f73eec6434e3outl00kAguiyi.html
+  ---
+
+Row 332:
+  Column: url
+    BEFORE: http://allegrolokalnie.pl-kategorie78127833718237.shop
+    AFTER:  http://allegrolokalnie.pl-kategorie***-***-33718237.shop
+  ---
+
+Row 342:
+  Column: url
+    BEFORE: http://thedomapinrobot.com./out.php?email=bjpg88@att.net
+    AFTER:  http://thedomapinrobot.com./out.php?email=[EMAIL_REDACTED]
+  ---
+
+Row 378:
+  Column: url
+    BEFORE: https://pub-5fe128b80bb74fb5bed9b6f57f31e6b8.r2.dev/newcpanel-aa5cc43015815732a4d38f73eec6434e3e5cc43015815732a4d38f73eec6434e3e5cc432234015815732a4d38f73eec6434e3e5cc43015815732a4d38f73eec6434e3e5cc43015815732a4d38f73eec6434e3ssww333.htm
+    AFTER:  https://pub-5fe128b80bb74fb5bed9b6f57f31e6b8.r2.dev/newcpanel-aa5cc***-***-15732a4d38f73eec6434e3e5cc***-***-15732a4d38f73eec6434e3e5cc***-***-015815732a4d38f73eec6434e3e5cc***-***-15732a4d38f73eec6434e3e5cc***-***-15732a4d38f73eec6434e3ssww333.htm
+  ---
+
+Row 393:
+  Column: url
+    BEFORE: https://eu.jotform.com/app/251882925426566
+    AFTER:  https://eu.jotform.com/app/***-***-925426566
+  ---
+
+Row 399:
+  Column: url
+    BEFORE: https://eu.jotform.com/app/252361661400346
+    AFTER:  https://eu.jotform.com/app/***-***-661400346
+  ---
+
+Row 434:
+  Column: url
+    BEFORE: https://app.jotform.com/251743934315155
+    AFTER:  https://app.jotform.com/***-***-934315155
+  ---
+
+Row 487:
+  Column: url
+    BEFORE: https://case1009841851085.web.app/
+    AFTER:  https://case***-***-1851085.web.app/
+  ---
+
+Row 497:
+  Column: url
+    BEFORE: https://www.jotform.com/app/252542792094563
+    AFTER:  https://www.jotform.com/app/XXXX-XXXX-XXX-4563
+  ---
+
+Row 498:
+  Column: url
+    BEFORE: https://share.ebforms.com/5610519690477568
+    AFTER:  https://share.ebforms.com/***-***-9690477568
+  ---
