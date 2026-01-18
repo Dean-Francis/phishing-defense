@@ -128,5 +128,4 @@ class URLDetectorTrainer:
 
 if __name__ == "__main__":
     trainer = URLDetectorTrainer()
-    trainer.train("/home/deanfrancis/Documents/Gradutaion_Project/phishing_defense_V2/data/Golden_Sheet.csv")
- 
+    trainer.train("Golden Test Cases FINAL - Sheet1.csv")
