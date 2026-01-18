@@ -1,0 +1,116 @@
+Scrub Report for output\set2\phishing_urls.csv
+============================================================
+
+Row 17:
+  Column: url
+    BEFORE: https://eu.jotform.com/app/251738517986574
+    AFTER:  https://eu.jotform.com/app/***-***-517986574
+  ---
+
+Row 49:
+  Column: url
+    BEFORE: https://www.google.com/url?q=https://firebasestorage.googleapis.com/v0/b/liclic-6fcde.appspot.com/o/kuuar.html?alt%3Dmedia%26token%3D2cc4d9f1-f36d-4dd4-b68b-a92663aa81c8%23%5B%5B-Email-%5D%5D&amp;source=gmail&amp;ust=1652434700657000&amp;usg=AOvVaw1sHuy2vxoNJChw_0GbyZtD
+    AFTER:  https://www.google.com/url?q=https://firebasestorage.googleapis.com/v0/b/liclic-6fcde.appspot.com/o/kuuar.html?alt%3Dmedia%26token%3D2cc4d9f1-f36d-4dd4-b68b-a92663aa81c8%23%5B%5B-Email-%5D%5D&amp;source=gmail&amp;ust=XXXX-XXXX-XXXX-7000&amp;usg=AOvVaw1sHuy2vxoNJChw_0GbyZtD
+  ---
+
+Row 64:
+  Column: url
+    BEFORE: http://allegrolokalnie.pl-oferta8367342489.shop
+    AFTER:  http://allegrolokalnie.pl-oferta***-***-2489.shop
+  ---
+
+Row 102:
+  Column: url
+    BEFORE: https://glfgfsdfvbd-102454-104494.weeblysite.com/
+    AFTER:  https://glfgfsdfvbd-***-***-104494.weeblysite.com/
+  ---
+
+Row 129:
+  Column: url
+    BEFORE: http://43.134.191.197/v3/signin/identifier?dsh=S-1845345719:1679418106178294&amp;followup=https://accounts.google.com/?&amp;ifkv=AWnogHceRTLJMYRlYCUGZVFUP54OZtQJsMJ0IGHEJQ2_PJf2IGUzfjLYEBurUv_7Gf1G7i22FVMt-w&amp;passive=1209600&amp;xrealip=107.178.236.2&amp;continue=https://accounts.google.com/?&amp;xrealip=34.198.46.118&amp;flowName=WebLiteSignIn&amp;flowEntry=ServiceLogin&amp;ifkv=AWnogHc5NZuWvUYkP3Ue7k6cyOUIZafypl4637CgQnYiL1Ww6_CsrOlXLoNU3ASbm4-qB1FjenUY
+    AFTER:  http://43.134.191.197/v3/signin/identifier?dsh=S-***-***-5719:***-***-8106178294&amp;followup=https://accounts.google.com/?&amp;ifkv=AWnogHceRTLJMYRlYCUGZVFUP54OZtQJsMJ0IGHEJQ2_PJf2IGUzfjLYEBurUv_7Gf1G7i22FVMt-w&amp;passive=1209600&amp;xrealip=107.178.236.2&amp;continue=https://accounts.google.com/?&amp;xrealip=34.198.46.118&amp;flowName=WebLiteSignIn&amp;flowEntry=ServiceLogin&amp;ifkv=AWnogHc5NZuWvUYkP3Ue7k6cyOUIZafypl4637CgQnYiL1Ww6_CsrOlXLoNU3ASbm4-qB1FjenUY
+  ---
+
+Row 139:
+  Column: url
+    BEFORE: https://eu.jotform.com/app/250919429739370
+    AFTER:  https://eu.jotform.com/app/***-***-429739370
+  ---
+
+Row 145:
+  Column: url
+    BEFORE: http://allegrolokalnie.pl-kategorie1982641267469832.shop
+    AFTER:  http://allegrolokalnie.pl-kategorie***-***-1267469832.shop
+  ---
+
+Row 149:
+  Column: url
+    BEFORE: https://allegrolokalnie.874291499.shop/oferta/9448ccf2-8b70-4176-bbc5-82220672969a
+    AFTER:  https://allegrolokalnie.***-**-1499.shop/oferta/9448ccf2-8b70-4176-bbc***-***-72969a
+  ---
+
+Row 170:
+  Column: url
+    BEFORE: http://allegrolokalnie.pl-kategorie781278950912571.shop
+    AFTER:  http://allegrolokalnie.pl-kategorie***-***-950912571.shop
+  ---
+
+Row 202:
+  Column: url
+    BEFORE: https://pages.cm.com/4992029000/4720ef6c-173f-41e3-8fd5-7f579a4f6c1d/section/0
+    AFTER:  https://pages.cm.com/***-***-9000/4720ef6c-173f-41e3-8fd5-7f579a4f6c1d/section/0
+  ---
+
+Row 232:
+  Column: url
+    BEFORE: http://43.134.167.94/v3/signin/identifier?dsh=S2047639070%3A1680181256420870&amp%3Bifkv=AQMjQ7TBBJhQmttvAcEhsR79zZ6qnWpeFSu9aBtyWZ2KyYk2xJr60oLQfJezAkD1_Cx65yFFn7lg5w&amp%3Bxrealip=185.194.93.13&continue=https%3A%2F%2Faccounts.google.com%2F%3F&xrealip=34.198.46.118&flowName=WebLiteSignIn&flowEntry=ServiceLogin&ifkv=AQMjQ7S0S2hujfnLiKG_Cq269VITtAJRWVgXersXv50eFdTElrk_vyCHQY9MwCo8DEXkQLuenckBug
+    AFTER:  http://43.134.167.94/v3/signin/identifier?dsh=S***-***-9070%3A***-***-1256420870&amp%3Bifkv=AQMjQ7TBBJhQmttvAcEhsR79zZ6qnWpeFSu9aBtyWZ2KyYk2xJr60oLQfJezAkD1_Cx65yFFn7lg5w&amp%3Bxrealip=185.194.93.13&continue=https%3A%2F%2Faccounts.google.com%2F%3F&xrealip=34.198.46.118&flowName=WebLiteSignIn&flowEntry=ServiceLogin&ifkv=AQMjQ7S0S2hujfnLiKG_Cq269VITtAJRWVgXersXv50eFdTElrk_vyCHQY9MwCo8DEXkQLuenckBug
+  ---
+
+Row 239:
+  Column: url
+    BEFORE: http://nvidia1651665403.zendesk.com/
+    AFTER:  http://nvidia***-***-5403.zendesk.com/
+  ---
+
+Row 288:
+  Column: url
+    BEFORE: https://us16.campaign-archive.com/?u=a4e994200155b2d582a8a7c76&id=7933509109
+    AFTER:  https://us16.campaign-archive.com/?u=a4e994200155b2d582a8a7c76&id=***-***-9109
+  ---
+
+Row 307:
+  Column: url
+    BEFORE: https://fbclid8123471236748129583.web.app/
+    AFTER:  https://fbclid***-***-1236748129583.web.app/
+  ---
+
+Row 316:
+  Column: url
+    BEFORE: https://facebookcenter1001932473852.firebaseapp.com/
+    AFTER:  https://facebookcenter***-***-2473852.firebaseapp.com/
+  ---
+
+Row 323:
+  Column: url
+    BEFORE: http://ahhhh.pe.kr/zb41/data/1057168297/?email=narindra.mohan@sep.epson.com.sg
+    AFTER:  http://ahhhh.pe.kr/zb41/data/***-***-8297/?email=[EMAIL_REDACTED]
+  ---
+
+Row 422:
+  Column: url
+    BEFORE: http://43.134.191.197/v3/signin/identifier?dsh=S84003032:1679472297842068&amp;followup=https://accounts.google.com/?&amp;ifkv=AWnogHeOY9JRnFFwcTEPjI81-arCmeMrw-iFaU_815IaUsjTOHLn_210jrMjsbrILLmbV5Yd_ojy&amp;passive=1209600&amp;xrealip=107.178.238.57&amp;continue=https://accounts.google.com/?&amp;xrealip=222.6.228.143&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin&amp;ifkv=AWnogHfEhrci25PD4ks7lSfqMt26KDZnLboV18s-iXj8MxlXMOD1tgtX7nqTVhCokrfT6dvSgHZaJA
+    AFTER:  http://43.134.191.197/v3/signin/identifier?dsh=S84003032:***-***-2297842068&amp;followup=https://accounts.google.com/?&amp;ifkv=AWnogHeOY9JRnFFwcTEPjI81-arCmeMrw-iFaU_815IaUsjTOHLn_210jrMjsbrILLmbV5Yd_ojy&amp;passive=1209600&amp;xrealip=107.178.238.57&amp;continue=https://accounts.google.com/?&amp;xrealip=222.6.228.143&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin&amp;ifkv=AWnogHfEhrci25PD4ks7lSfqMt26KDZnLboV18s-iXj8MxlXMOD1tgtX7nqTVhCokrfT6dvSgHZaJA
+  ---
+
+Row 425:
+  Column: url
+    BEFORE: https://bestnailsdirectory.com/OdlPrT/?&&example@example.example
+    AFTER:  https://bestnailsdirectory.com/OdlPrT/?&&[EMAIL_REDACTED]
+  ---
+
+Row 494:
+  Column: url
+    BEFORE: https://edfdc0fa5e2ae6e3c6d7156f3b2ce00c.cdn.bubble.io/f1679644455398x630943732016925300/webmailf.html
+    AFTER:  https://edfdc0fa5e2ae6e3c6d7156f3b2ce00c.cdn.bubble.io/f***-***-4455398x***-***-732016925300/webmailf.html
+  ---
