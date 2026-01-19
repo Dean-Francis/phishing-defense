@@ -28,7 +28,7 @@ class URLDetectorInference:
         
         Args:
             url_data: Dictionary containing URL information
-                Required keys: 'raw_url' or 'expanded_url'
+                Required keys: 'url'
         
         Returns:
             Dictionary with:
@@ -93,10 +93,10 @@ if __name__ == "__main__":
     
     test_urls = [
         {
-            'raw_url': 'https://secure-paypal-verify.tk/login'
+            'url': 'https://secure-paypal-verify.tk/login'
         },
         {
-            'raw_url': 'https://www.google.com'
+            'url': 'https://www.google.com'
         }
     ]
     
@@ -105,7 +105,7 @@ if __name__ == "__main__":
     print("="*60)
     
     for i, url_data in enumerate(test_urls, 1):
-        print(f"\nTest Case {i}: {url_data['raw_url']}")
+        print(f"\nTest Case {i}: {url_data['url']}")
         print("-"*60)
         result = detector.predict(url_data)
         print(f"Score: {result['score']:.4f}")

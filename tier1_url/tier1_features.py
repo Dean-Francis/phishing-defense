@@ -18,7 +18,7 @@ class URLFeatureExtractor:
         ]
     
     def extract_features(self, row: Dict[str, Any]) -> Dict[str, Any]:
-        url = row.get('expanded_url', row.get('raw_url', ''))
+        url = row.get('url')
         
         if not url or not isinstance(url, str):
             return self._get_null_features()

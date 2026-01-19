@@ -17,18 +17,14 @@ class URLDetectorTrainer:
         self.feature_names = None
         
     def load_data(self, csv_path):
-        """Load and prepare training data"""
         df = pd.read_csv(csv_path)
         
-        # Extract features
         X = self.feature_extractor.extract_from_dataframe(df)
         self.feature_names = X.columns.tolist()
         
-        # Extract labels (assuming 'label' column with 'phishing'/'benign')
-        y = df['label'].apply(lambda x: 1 if str(x).lower() == 'phishing' else 0)
+        y = df['label'].astype(int)
         
-        return X, y
-    
+        return X, y    
     def train(self, csv_path, test_size=0.2, random_state=42):
         """Train the LightGBM model"""
         print("Loading data...")
@@ -128,4 +124,4 @@ class URLDetectorTrainer:
 
 if __name__ == "__main__":
     trainer = URLDetectorTrainer()
-    trainer.train("Golden Test Cases FINAL - Sheet1.csv")
+    trainer.train("/home/deanfrancis/Documents/Gradutaion_Project/phishing_defense_V2/data/training_dataset_clean.csv")
