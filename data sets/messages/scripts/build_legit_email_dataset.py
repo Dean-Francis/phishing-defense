@@ -10,11 +10,13 @@ Rules:
 - Only emails containing a URL are included
 - Stops after 5000 valid rows
 - Flag is always 0 (legitimate)
+- Removes all email headers and transport metadata
 
 Usage:
     python build_legit_email_dataset.py \
         --input legit_emails_raw.csv \
-        --output legit_emails_with_urls.csv
+        --output legit_emails_with_urls.csv \
+        --limit 5000
 """
 
 import argparse
@@ -26,6 +28,8 @@ from email.utils import parseaddr
 
 URL_RE = re.compile(r"https?://[^\s\"'>]+")
 
+# ---------- Cleaning Functions ----------
+
 def extract_first_url(text):
     if not isinstance(text, str):
         return ""
@@ -33,29 +37,52 @@ def extract_first_url(text):
     return match.group(0) if match else ""
 
 def extract_sender_from_message(message_text):
-    """Extract sender from email message body."""
+    """Extract sender from email headers."""
     if not isinstance(message_text, str):
         return ""
-    
-    for line in message_text.split('\n'):
-        if line.lower().startswith('from:'):
+
+    for line in message_text.split("\n"):
+        if line.lower().startswith("from:"):
             sender = line[5:].strip()
             _, email = parseaddr(sender)
             if email:
                 return email.lower()
-            # If parseaddr didn't work, try extracting email from angle brackets
-            match = re.search(r'<([^>]+)>', sender)
-            if match:
-                return match.group(1).lower()
-            return sender.lower()
-    
     return ""
+
+def extract_clean_body(raw_text):
+    """Extract real email body (strip RFC headers only)"""
+
+    if not isinstance(raw_text, str):
+        return ""
+
+    # Normalize newlines
+    text = raw_text.replace("\r\n", "\n").replace("\r", "\n")
+
+    # Split headers from body at first blank line
+    parts = text.split("\n\n", 1)
+
+    if len(parts) == 2:
+        body = parts[1]
+    else:
+        body = text  # fallback if no headers
+
+    # Remove obvious forwarded header blocks
+    body = re.sub(r"-{5,}.*?-{5,}", "", body, flags=re.DOTALL)
+
+    # Strip excessive leading/trailing whitespace
+    body = body.strip()
+
+    return body
+
+# ---------- Helpers ----------
 
 def find_column(df, candidates):
     for col in candidates:
         if col in df.columns:
             return col
     raise ValueError(f"Could not find any of these columns: {candidates}")
+
+# ---------- Main ----------
 
 def main():
     parser = argparse.ArgumentParser(description="Build legitimate email dataset")
@@ -73,31 +100,30 @@ def main():
     print(f"[+] Target rows: {args.limit}")
 
     records = []
-    counter = 0
 
     print("[+] Extracting legitimate emails with URLs...")
     for _, row in tqdm(df.iterrows(), total=len(df)):
-        message = row[message_col].strip()
-        
-        if not message:
+        raw_message = row[message_col].strip()
+
+        if not raw_message:
             continue
 
-        sender = extract_sender_from_message(message)
+        sender = extract_sender_from_message(raw_message)
         if not sender:
-            sender = "Unknown"
+            sender = "unknown"
 
-        url = extract_first_url(message)
+        clean_body = extract_clean_body(raw_message)
+        url = extract_first_url(clean_body)
 
         if not url:
             continue  # discard emails without URLs
 
         records.append({
             "sender": sender,
-            "message_body": message,
+            "message_body": clean_body,
             "url": url,
             "flag": 0
         })
-        counter += 1
 
         if len(records) >= args.limit:
             break
@@ -112,7 +138,6 @@ def main():
     out_df.to_csv(out_path, index=False)
 
     print("\n=== Dataset Build Complete ===")
-    print(f"Total entries collected: {counter}")
     print(f"Rows written: {len(out_df)}")
     print(f"Output file: {out_path}")
 
