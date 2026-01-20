@@ -73,12 +73,10 @@ def main():
     print(f"[+] Target rows: {args.limit}")
 
     records = []
+    counter = 0
 
     print("[+] Extracting legitimate emails with URLs...")
     for _, row in tqdm(df.iterrows(), total=len(df)):
-        if len(records) >= args.limit:
-            break
-
         message = row[message_col].strip()
         
         if not message:
@@ -99,6 +97,10 @@ def main():
             "url": url,
             "flag": 0
         })
+        counter += 1
+
+        if len(records) >= args.limit:
+            break
 
     if len(records) < args.limit:
         print(f"[!] Warning: Only found {len(records)} emails with URLs")
@@ -110,6 +112,7 @@ def main():
     out_df.to_csv(out_path, index=False)
 
     print("\n=== Dataset Build Complete ===")
+    print(f"Total entries collected: {counter}")
     print(f"Rows written: {len(out_df)}")
     print(f"Output file: {out_path}")
 
