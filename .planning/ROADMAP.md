@@ -33,12 +33,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Inference pipeline handles single messages and batches
   4. Model achieves >85% accuracy on held-out test set
 
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md — Setup directory, acquire dataset, train DistilBERT model
+- [ ] 01-02-PLAN.md — Build inference pipeline matching Tier 1 output structure
 
 ### Phase 2: Fusion & LLM Integration
 **Goal**: Multi-tier detection system combines URL and text signals with LLM fallback
@@ -133,7 +132,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Tier 2 Text Detection | 0/TBD | Not started | - |
+| 1. Tier 2 Text Detection | 0/2 | Planned | - |
 | 2. Fusion & LLM Integration | 0/TBD | Not started | - |
 | 3. API Service | 0/TBD | Not started | - |
 | 4. Browser Extension | 0/TBD | Not started | - |
@@ -141,3 +140,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 ---
 *Roadmap created: 2026-01-20*
+*Phase 1 planned: 2026-01-21*
