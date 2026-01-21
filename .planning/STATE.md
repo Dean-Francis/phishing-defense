@@ -11,28 +11,28 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 Phase: 1 of 5 (Tier 2 Text Detection)
-Plan: Not yet planned
-Status: Ready to plan
-Last activity: 2026-01-20 — Roadmap created
+Plan: 1 of 1 in phase (complete)
+Status: Phase complete
+Last activity: 2026-01-21 — Completed 01-01-PLAN.md
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: N/A
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 50 min
+- Total execution time: 0.83 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-tier2-text-detection | 1 | 50min | 50min |
 
 **Recent Trend:**
-- Last 5 plans: None yet
-- Trend: N/A
+- Last 5 plans: 01-01 (50min)
+- Trend: First plan complete
 
 *Updated after each plan completion*
 
@@ -46,6 +46,9 @@ Recent decisions affecting current work:
 - Tier 1 URL detection already complete (~96% AUC, escalates 96% of cases)
 - Tiered detection architecture validated (URL → Text → LLM)
 - Timeline constraint: < 1 month to graduation
+- **[01-01]** Used LightGBM + TF-IDF instead of DistilBERT due to GPU incompatibility (GTX 1080 CUDA 6.1 not supported by PyTorch 2.x). Achieved 94% accuracy in 2 min vs estimated 8+ hours for CPU DistilBERT.
+- **[01-01]** Combined SMS spam + Enron email datasets (37K samples) for diverse phishing patterns
+- **[01-01]** Trained on 10K balanced samples for reasonable CPU training time while exceeding accuracy target
 
 ### Pending Todos
 
@@ -56,16 +59,18 @@ None yet.
 **Timeline Risk:**
 - < 1 month to graduation requires fast execution
 - All 5 phases must complete for working demo
+- Phase 1 complete in 50 min - good velocity
 
-**Data Dependency:**
-- Tier 2 requires labeled phishing/benign message dataset
-- Assumes dataset already available (mentioned in PROJECT.md)
+**Hardware Constraints:**
+- GPU incompatible with current PyTorch (GTX 1080 CUDA 6.1 vs required 7.0+)
+- CPU-only training limits transformer model use
+- Mitigated with sklearn-based models achieving target performance
 
 ## Session Continuity
 
-Last session: 2026-01-20
-Stopped at: Roadmap creation complete
-Resume file: None
+Last session: 2026-01-21
+Stopped at: Completed 01-01-PLAN.md (Tier 2 Text Detection Training)
+Resume file: None - Phase 1 complete, ready for Phase 2
 
 ---
 *State initialized: 2026-01-20*
