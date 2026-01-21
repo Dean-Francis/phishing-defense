@@ -1,9 +1,128 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<head></head>
+<head>
+	<meta charset="UTF-8" />
+	<title>Email Dashboard</title>
+
+	<style>
+		:root {
+			--bg: #f7f7f8;
+			--panel: #ffffff;
+			--border: #e5e7eb;
+			--text: #111827;
+			--muted: #6b7280;
+			--hover: #f1f5f9;
+			--accent: #2563eb;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--bg: #0f172a;
+				--panel: #020617;
+				--border: #1e293b;
+				--text: #e5e7eb;
+				--muted: #94a3b8;
+				--hover: #020617;
+			}
+		}
+
+		body {
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			margin: 0;
+			padding: 24px;
+		}
+
+		.dashboard {
+			background: var(--panel);
+			border-radius: 12px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+			overflow: hidden;
+		}
+
+		.email-grid {
+			display: grid;
+			grid-template-columns: 240px 200px minmax(300px, 1fr);
+			row-gap: 20px;
+		}
+
+		.email-grid.header {
+			position: sticky;
+			top: 0;
+			z-index: 2;
+			background: var(--panel);
+			font-weight: 600;
+			border-bottom: 1px solid var(--border);
+		}
+
+		.email-grid.header>div {
+			padding: 14px 16px;
+			color: var(--muted);
+			font-size: 0.85rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		.email-row {
+			display: contents;
+		}
+
+		.cell {
+			padding: 14px 16px;
+			border-bottom: 1px solid var(--border);
+			font-size: 0.95rem;
+			line-height: 1.4;
+			overflow-wrap: anywhere;
+		}
+
+		.email-row:hover .cell {
+			background: var(--hover);
+		}
+
+		.cell:nth-child(3n + 1) {
+			font-weight: 500;
+		}
+
+		.cell:nth-child(3n + 2) {
+			color: var(--muted);
+		}
+
+		.cell.content {
+			white-space: normal;
+			max-height: 6em;
+			overflow-y: auto;
+			scrollbar-width: thin;
+		}
+
+		.cell.content::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		.cell.content::-webkit-scrollbar-thumb {
+			background: var(--border);
+			border-radius: 3px;
+		}
+
+		.cell.content:hover {
+			background: var(--hover);
+		}
+	</style>
+</head>
 
 <body>
-	<p>Dashboard</p>
+	<div class="dashboard">
+		<div class="email-grid header">
+			<div>Email</div>
+			<div>Contact</div>
+			<div>Content</div>
+		</div>
+
+		<div id="email-grid" class="email-grid"></div>
+	</div>
+
+	<script src="dashboard.js"></script>
 </body>
 
 </html>
