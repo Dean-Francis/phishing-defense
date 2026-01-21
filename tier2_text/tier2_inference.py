@@ -120,30 +120,185 @@ class TextDetectorInference:
         return results
 
 
+def validate_output_structure(result: Dict[str, Any]) -> bool:
+    """Validate that prediction output has required structure"""
+    # Check top-level keys exist
+    required_keys = ['score', 'label', 'confidence', 'escalate', 'metadata']
+    for key in required_keys:
+        assert key in result, f"Missing required key: {key}"
+
+    # Validate types
+    assert isinstance(result['score'], float), f"score must be float, got {type(result['score'])}"
+    assert 0.0 <= result['score'] <= 1.0, f"score must be 0-1, got {result['score']}"
+    assert result['label'] in ['phishing', 'benign'], f"label must be 'phishing' or 'benign', got {result['label']}"
+    assert result['confidence'] in ['high', 'low'], f"confidence must be 'high' or 'low', got {result['confidence']}"
+    assert isinstance(result['escalate'], bool), f"escalate must be bool, got {type(result['escalate'])}"
+
+    # Validate metadata
+    metadata = result['metadata']
+    assert 'tier' in metadata, "metadata missing 'tier'"
+    assert 'model' in metadata, "metadata missing 'model'"
+    assert 'threshold' in metadata, "metadata missing 'threshold'"
+    assert metadata['tier'] == 2, f"tier must be 2, got {metadata['tier']}"
+
+    return True
+
+
 if __name__ == "__main__":
-    # Demo with test cases
+    print("="*70)
+    print("TIER 2 TEXT DETECTOR - COMPREHENSIVE VALIDATION")
+    print("="*70)
+
+    # Initialize detector
     detector = TextDetectorInference(confidence_threshold=0.85)
 
+    # Test cases: 3 phishing, 3 benign
     test_messages = [
         # Clear phishing signals
-        {'text': 'URGENT: Your account will be suspended! Click here to verify: http://fake-bank.tk'},
-        {'text': 'Congratulations! You won $1,000,000. Reply with your bank details to claim.'},
+        {'text': 'URGENT: Your account will be suspended! Click here to verify: http://fake-bank.tk', 'expected': 'phishing'},
+        {'text': 'Congratulations! You won $1,000,000. Reply with your bank details to claim.', 'expected': 'phishing'},
+        {'text': 'Your PayPal account has been limited. Log in immediately to restore access.', 'expected': 'phishing'},
 
         # Clear benign messages
-        {'text': 'Hi, just wanted to check if you received my email about the project deadline.'},
-        {'text': 'The meeting has been rescheduled to 3pm tomorrow. Please confirm attendance.'},
+        {'text': 'Hi, just wanted to check if you received my email about the project deadline.', 'expected': 'benign'},
+        {'text': 'The meeting has been rescheduled to 3pm tomorrow. Please confirm attendance.', 'expected': 'benign'},
+        {'text': 'Thank you for your order. Your package will arrive in 3-5 business days.', 'expected': 'benign'},
     ]
 
-    print("="*60)
-    print("TIER 2 TEXT DETECTOR - INFERENCE EXAMPLES")
-    print("="*60)
+    # ================================================================
+    # SINGLE PREDICTION TESTS
+    # ================================================================
+    print("\n" + "="*70)
+    print("SINGLE PREDICTION TESTS")
+    print("="*70)
 
-    for i, text_data in enumerate(test_messages, 1):
-        print(f"\nTest Case {i}: {text_data['text'][:50]}...")
-        print("-"*60)
+    single_results = []
+    warnings = []
+
+    for i, test_case in enumerate(test_messages, 1):
+        text_data = {'text': test_case['text']}
+        expected = test_case['expected']
+
         result = detector.predict(text_data)
-        print(f"Score: {result['score']:.4f}")
-        print(f"Label: {result['label']}")
-        print(f"Confidence: {result['confidence']}")
-        print(f"Escalate to Tier 3: {result['escalate']}")
-        print(f"Metadata: tier={result['metadata']['tier']}, text_length={result['metadata']['text_length']}")
+        single_results.append(result)
+
+        # Validate output structure
+        try:
+            validate_output_structure(result)
+            structure_ok = "OK"
+        except AssertionError as e:
+            structure_ok = f"FAIL: {e}"
+
+        # Check classification accuracy
+        actual_label = result['label']
+        if actual_label != expected:
+            warnings.append(f"Case {i}: Expected '{expected}', got '{actual_label}' (score={result['score']:.4f})")
+
+        print(f"\nTest Case {i}: {test_case['text'][:45]}...")
+        print(f"  Expected: {expected} | Actual: {actual_label} | Score: {result['score']:.4f}")
+        print(f"  Confidence: {result['confidence']} | Escalate: {result['escalate']} | Structure: {structure_ok}")
+
+    # ================================================================
+    # BATCH PREDICTION TESTS
+    # ================================================================
+    print("\n" + "="*70)
+    print("BATCH PREDICTION TESTS")
+    print("="*70)
+
+    text_data_list = [{'text': tc['text']} for tc in test_messages]
+    batch_results = detector.predict_batch(text_data_list)
+
+    # Validate batch results match single results
+    batch_match = True
+    for i, (single, batch) in enumerate(zip(single_results, batch_results)):
+        if abs(single['score'] - batch['score']) > 1e-9:
+            batch_match = False
+            print(f"MISMATCH Case {i+1}: single={single['score']:.6f}, batch={batch['score']:.6f}")
+
+    if batch_match:
+        print("Batch results MATCH single prediction results (scores identical)")
+    else:
+        print("WARNING: Batch results do NOT match single predictions!")
+
+    # Validate batch output structures
+    batch_structure_ok = True
+    for i, result in enumerate(batch_results):
+        try:
+            validate_output_structure(result)
+        except AssertionError as e:
+            batch_structure_ok = False
+            print(f"Batch result {i+1} structure error: {e}")
+
+    if batch_structure_ok:
+        print("All batch results have valid output structure")
+
+    # ================================================================
+    # SUMMARY TABLE
+    # ================================================================
+    print("\n" + "="*70)
+    print("RESULTS SUMMARY TABLE")
+    print("="*70)
+    print(f"| {'Message (truncated)':<40} | {'Score':<6} | {'Label':<8} | {'Conf':<5} | {'Esc':<5} |")
+    print(f"|{'-'*42}|{'-'*8}|{'-'*10}|{'-'*7}|{'-'*7}|")
+
+    for i, (tc, result) in enumerate(zip(test_messages, single_results)):
+        text_short = tc['text'][:38] + ".." if len(tc['text']) > 40 else tc['text'][:40]
+        label_short = "phish" if result['label'] == 'phishing' else "benign"
+        esc_str = str(result['escalate'])
+        print(f"| {text_short:<40} | {result['score']:.4f} | {label_short:<8} | {result['confidence']:<5} | {esc_str:<5} |")
+
+    # ================================================================
+    # CLASSIFICATION ACCURACY
+    # ================================================================
+    print("\n" + "="*70)
+    print("CLASSIFICATION ACCURACY")
+    print("="*70)
+
+    correct = sum(1 for tc, r in zip(test_messages, single_results) if tc['expected'] == r['label'])
+    total = len(test_messages)
+
+    print(f"Correct classifications: {correct}/{total} ({100*correct/total:.1f}%)")
+
+    if warnings:
+        print("\nWarnings (unexpected classifications):")
+        for w in warnings:
+            print(f"  - {w}")
+    else:
+        print("\nNo classification warnings - all test cases classified as expected!")
+
+    # ================================================================
+    # FINAL STATUS
+    # ================================================================
+    print("\n" + "="*70)
+    print("VALIDATION STATUS")
+    print("="*70)
+
+    all_passed = True
+
+    # Check minimum accuracy (4/6)
+    if correct >= 4:
+        print("[PASS] Classification accuracy >= 4/6")
+    else:
+        print(f"[FAIL] Classification accuracy {correct}/6 < 4/6 minimum")
+        all_passed = False
+
+    # Check structure validation
+    if batch_structure_ok:
+        print("[PASS] All output structures valid")
+    else:
+        print("[FAIL] Some output structures invalid")
+        all_passed = False
+
+    # Check batch consistency
+    if batch_match:
+        print("[PASS] Batch results match single predictions")
+    else:
+        print("[FAIL] Batch results differ from single predictions")
+        all_passed = False
+
+    print("\n" + "="*70)
+    if all_passed:
+        print("ALL VALIDATION CHECKS PASSED")
+    else:
+        print("SOME VALIDATION CHECKS FAILED - see details above")
+    print("="*70)
