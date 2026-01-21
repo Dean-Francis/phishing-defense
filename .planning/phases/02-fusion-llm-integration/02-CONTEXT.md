@@ -1,6 +1,7 @@
 # Phase 2: Fusion & LLM Integration - Context
 
 **Gathered:** 2026-01-22
+**Updated:** 2026-01-22
 **Status:** Ready for planning
 
 <domain>
@@ -18,6 +19,12 @@ Multi-tier detection system that combines Tier 1 URL scores and Tier 2 text scor
 - Weights: Claude's discretion based on model performance analysis
 - Final threshold: 0.5 (50%+ probability = phishing)
 - Single-input handling: Use available score alone if only URL or only text provided
+- Conflicting tiers: Claude's discretion based on which model has better calibration
+
+### Risk Level Output
+- Three levels: Low / Medium / High
+- Balanced mapping: 0-0.4 Low, 0.4-0.6 Medium, 0.6+ High
+- Return alongside numeric score for flexibility
 
 ### LLM Prompt Design
 - Context: Include tier scores + ask Claude for independent analysis
@@ -37,8 +44,13 @@ Multi-tier detection system that combines Tier 1 URL scores and Tier 2 text scor
 - Storage: SQLite file (persists across restarts)
 - Bypass option: `skip_cache=True` flag for fresh analysis
 
+### API Key Configuration
+- Claude API key from environment variable: ANTHROPIC_API_KEY
+- Standard for deployment, no config file needed
+
 ### Claude's Discretion
 - Optimal fusion weights based on Tier 1 and Tier 2 model performance
+- How to handle conflicting tier scores
 - SQLite schema design
 - Error handling and retry logic
 - Prompt engineering for best Claude responses
