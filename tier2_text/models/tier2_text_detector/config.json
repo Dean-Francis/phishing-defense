@@ -1,0 +1,14 @@
+{
+  "model_type": "lightgbm_tfidf",
+  "num_labels": 2,
+  "id2label": {
+    "0": "BENIGN",
+    "1": "PHISHING"
+  },
+  "label2id": {
+    "BENIGN": 0,
+    "PHISHING": 1
+  },
+  "max_features": 5000,
+  "note": "TF-IDF + LightGBM model (CPU-optimized alternative to DistilBERT)"
+}
