@@ -1,11 +1,16 @@
 import os
+import sys
 import time
 import re
 from typing import Dict, Any, Optional
 from dotenv import load_dotenv
 from anthropic import Anthropic, APIError, RateLimitError
 
-from tier3_llm.tier3_cache import LLMCache
+# Support both: imported as module and run directly
+try:
+    from tier3_llm.tier3_cache import LLMCache
+except ModuleNotFoundError:
+    from tier3_cache import LLMCache
 
 load_dotenv()
 
