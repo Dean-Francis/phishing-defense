@@ -278,19 +278,20 @@ if __name__ == "__main__":
         print(f"  [ERROR] {e}")
 
     # ================================================================
-    # TEST 4: Text only (clear phishing message)
+    # TEST 4: Text only (high-confidence phishing message)
     # ================================================================
     print("\n" + "-" * 70)
-    print("Test 4: Text only (clear phishing message)")
+    print("Test 4: Text only (high-confidence phishing message)")
     print("-" * 70)
     tests_run += 1
 
     try:
+        # Use text that produces high-confidence phishing score (>0.7)
         result = pipeline.analyze(
-            text='URGENT: Your bank account has been compromised! Reply with your password immediately!'
+            text='URGENT: Your account will be suspended! Click here to verify: http://fake-bank.tk'
         )
         print(f"  URL: (none)")
-        print(f"  Text: URGENT: Your bank account has been compromised!...")
+        print(f"  Text: URGENT: Your account will be suspended!...")
         print(f"  Result: {result['result']} | Risk: {result['risk_level']} | Tier: {result['tier_used']}")
         print(f"  Reasoning:")
         for reason in result['reasoning']:
