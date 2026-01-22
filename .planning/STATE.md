@@ -11,29 +11,29 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 Phase: 2 of 5 (Fusion & LLM Integration)
-Plan: 1 of 3 in phase
+Plan: 2 of 3 in phase
 Status: In progress
-Last activity: 2026-01-22 — Completed 02-01-PLAN.md
+Last activity: 2026-01-22 — Completed 02-02-PLAN.md
 
-Progress: [█████░░░░░] 50%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 20 min
-- Total execution time: 0.98 hours
+- Total plans completed: 4
+- Average duration: 19 min
+- Total execution time: 1.23 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-tier2-text-detection | 2 | 53min | 27min |
-| 02-fusion-llm-integration | 1 | 6min | 6min |
+| 02-fusion-llm-integration | 2 | 21min | 11min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (50min), 01-02 (3min), 02-01 (6min)
-- Trend: Excellent velocity, Phase 2 started
+- Last 5 plans: 01-01 (50min), 01-02 (3min), 02-01 (6min), 02-02 (15min)
+- Trend: Excellent velocity, Phase 2 progressing well
 
 *Updated after each plan completion*
 
@@ -56,6 +56,10 @@ Recent decisions affecting current work:
 - **[02-01]** Equal weights (1.0, 1.0) for fusion - both tiers weighted equally since both achieve ~94-96% accuracy
 - **[02-01]** Uncertain zone 0.3-0.7 for escalation - can widen to 0.25-0.75 for final demo
 - **[02-01]** Escalate ONLY when BOTH tiers uncertain - prevents unnecessary LLM API calls
+- **[02-02]** Use claude-3-haiku for cost efficiency during development; Sonnet available for demo
+- **[02-02]** MD5 cache keys with URL lowercase and text strip normalization
+- **[02-02]** 24-hour TTL for cached LLM responses (configurable)
+- **[02-02]** Fail-safe to 'phishing' on API errors (confidence=0.5)
 
 ### Pending Todos
 
@@ -66,7 +70,7 @@ None.
 **Timeline Risk:**
 - < 1 month to graduation requires fast execution
 - All 5 phases must complete for working demo
-- Phase 1 complete in 53 min, Phase 2 Plan 1 in 6 min - excellent velocity
+- Phase 1 complete in 53 min, Phase 2 at 21 min (2/3 plans) - excellent velocity
 
 **Hardware Constraints:**
 - GPU incompatible with current PyTorch (GTX 1080 CUDA 6.1 vs required 7.0+)
@@ -81,8 +85,8 @@ None.
 ## Session Continuity
 
 Last session: 2026-01-22
-Stopped at: Completed 02-01-PLAN.md (Fusion Logic)
-Resume file: None - ready for 02-02-PLAN.md (Tier 3 LLM Orchestrator)
+Stopped at: Completed 02-02-PLAN.md (Tier 3 LLM Integration)
+Resume file: None - ready for 02-03-PLAN.md (Full Pipeline Orchestrator)
 
 ---
 *State initialized: 2026-01-20*
