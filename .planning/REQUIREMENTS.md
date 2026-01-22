@@ -9,13 +9,13 @@ Requirements for graduation demo. Each maps to roadmap phases.
 
 ### Detection Models
 
-- [ ] **DET-01**: Tier 2 text classifier trained on labeled phishing/benign messages
-- [ ] **DET-02**: Tier 2 model returns confidence score (0-1) for phishing probability
-- [ ] **DET-03**: Tier 3 LLM integration calls Claude API for borderline cases
-- [ ] **DET-04**: Tier 3 returns verdict (phishing/safe) with 2-3 sentence reasoning
-- [ ] **DET-05**: Fusion logic combines Tier 1 URL score and Tier 2 text score
-- [ ] **DET-06**: Fusion escalates to Tier 3 when both tiers have low confidence
-- [ ] **DET-07**: Response caching for LLM calls to reduce latency and cost
+- [x] **DET-01**: Tier 2 text classifier trained on labeled phishing/benign messages
+- [x] **DET-02**: Tier 2 model returns confidence score (0-1) for phishing probability
+- [x] **DET-03**: Tier 3 LLM integration calls Claude API for borderline cases
+- [x] **DET-04**: Tier 3 returns verdict (phishing/safe) with 2-3 sentence reasoning
+- [x] **DET-05**: Fusion logic combines Tier 1 URL score and Tier 2 text score
+- [x] **DET-06**: Fusion escalates to Tier 3 when both tiers have low confidence
+- [x] **DET-07**: Response caching for LLM calls to reduce latency and cost
 
 ### API Service
 
@@ -86,13 +86,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DET-01 | Phase 1 | Pending |
-| DET-02 | Phase 1 | Pending |
-| DET-03 | Phase 2 | Pending |
-| DET-04 | Phase 2 | Pending |
-| DET-05 | Phase 2 | Pending |
-| DET-06 | Phase 2 | Pending |
-| DET-07 | Phase 2 | Pending |
+| DET-01 | Phase 1 | Complete |
+| DET-02 | Phase 1 | Complete |
+| DET-03 | Phase 2 | Complete |
+| DET-04 | Phase 2 | Complete |
+| DET-05 | Phase 2 | Complete |
+| DET-06 | Phase 2 | Complete |
+| DET-07 | Phase 2 | Complete |
 | API-01 | Phase 3 | Pending |
 | API-02 | Phase 3 | Pending |
 | API-03 | Phase 3 | Pending |

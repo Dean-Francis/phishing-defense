@@ -13,7 +13,7 @@ Build a working multi-tier phishing detection demo for graduation. Tier 1 URL de
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Tier 2 Text Detection** - Train and deploy message content classifier
-- [ ] **Phase 2: Fusion & LLM Integration** - Combine signals and add Claude reasoning
+- [x] **Phase 2: Fusion & LLM Integration** - Combine signals and add Claude reasoning
 - [ ] **Phase 3: API Service** - Expose detection endpoints via FastAPI
 - [ ] **Phase 4: Browser Extension** - Build Chrome extension with scan capabilities
 - [ ] **Phase 5: Documentation & Validation** - Technical report and evaluation metrics
@@ -56,9 +56,9 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Fusion logic combining Tier 1 and Tier 2 scores with escalation criteria
-- [ ] 02-02-PLAN.md — Tier 3 Claude API integration with SQLite response caching
-- [ ] 02-03-PLAN.md — End-to-end pipeline orchestrating all detection tiers
+- [x] 02-01-PLAN.md — Fusion logic combining Tier 1 and Tier 2 scores with escalation criteria
+- [x] 02-02-PLAN.md — Tier 3 Claude API integration with SQLite response caching
+- [x] 02-03-PLAN.md — End-to-end pipeline orchestrating all detection tiers
 
 ### Phase 3: API Service
 **Goal**: Detection system accessible via production-ready FastAPI endpoints
@@ -133,7 +133,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Tier 2 Text Detection | 2/2 | Complete | 2026-01-21 |
-| 2. Fusion & LLM Integration | 0/3 | Planned | - |
+| 2. Fusion & LLM Integration | 3/3 | Complete | 2026-01-22 |
 | 3. API Service | 0/TBD | Not started | - |
 | 4. Browser Extension | 0/TBD | Not started | - |
 | 5. Documentation & Validation | 0/TBD | Not started | - |
